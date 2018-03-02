@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
+        <title>RSS Noticias </title>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        
+        
+        
+        
+        <h:form>
+
+		<p:panel id="rssEjer"
+			header="Utilización de fuentes de sindicación/suscripción, RegEX y XQuery"
+			footer="" style="margin-bottom:20px">
+			<h:panelGrid columns="1" cellpadding="10">
+				<h:outputText
+					value="Desarrolle  un  componente  sencillo  que  permita  consumir  las  fuentes  indicadas al  final  del  enunciado y  filtrarlas  por cualquiera de los siguientes elementos: palabras en el título, en la descripción o en las categorías del artículo (post), de acuerdo  con  lo  indicado  por  el  usuario.  El  criterio  de  consulta  es  un  elemento  y  su contenido.El  usuario  debe  poder actualizar  el  criterio  de  filtrado  en  cualquier  momento. Por  ejemplo, mostrar  las  noticias  etiquetadas  en  Juegos Olímpicos, con Juegos Olímpicos en el título o Juegos Olímpicos en la descripción." />
+			</h:panelGrid>
+		</p:panel>
+
+                       
+            
+            <p:dataTable var="rss" value="#{talleer1.noticiasRss}"
+			widgetVar="noticiasTable" emptyMessage="Sin registros"
+			filteredValue="#{talleer1.noticiasRss}" paginator="true"
+			rows="10" style="margin-bottom:20px">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Buscar general:" />
+					<p:inputText id="globalFilter"
+						onkeyup="PF('noticiasTable').filter()" style="width:150px"
+						placeholder="Ingrese palabra" />
+				</p:outputPanel>
+			</f:facet>
+                                
+			<p:column filterBy="#{rss.titulo}" headerText="Titulo"
+				style="font-size:11px" filterMatchMode="contains">
+
+				<h:outputText value="#{rss.titulo}" />
+			</p:column>
+
+		
+		</p:dataTable>
+
+	</h:form>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </h:body>
+</html>
+

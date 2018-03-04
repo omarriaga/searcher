@@ -1,10 +1,17 @@
 package RSS;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import net.sf.saxon.query.XQueryExpression;
+import net.sf.saxon.query.XQueryParser;
+
+
+
+
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -12,7 +19,60 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class LectorRSS {
+public class LectorRSS extends Thread{
+    
+        	
+	private String tipo;
+	private String uri;
+	private ArrayList<Noticiia> noticiias;
+    private CountDownLatch countDownLatch;
+	
+
+	public LectorRSS(String tipo, String uri, CountDownLatch countDownLatch){
+		this.tipo = tipo;
+		this.uri = uri;
+		this.noticiias = new ArrayList<Noticiia>();
+		this.countDownLatch = countDownLatch;
+	}
+	
+	@Override
+	public void run() {		
+		if (tipo.equals("DW")) {			
+			noticiias = LeerRSSDW(uri);
+//			System.out.println("Hla");
+		}else {
+			noticiias = LeerRSS(uri);
+//			System.out.println("hla");
+
+		}	
+        countDownLatch.countDown();
+        }   
+        
+        public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getUri() {
+		return uri;
+	}
+
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
+	public ArrayList<Noticiia> getNoticiias() {
+		return noticiias;
+	}
+
+	public void setNoticiias(ArrayList<Noticiia> noticiias) {
+		this.noticiias = noticiias;
+	}
+    
+    
 	public static ArrayList<Noticiia> LeerRSS(String uri) {
 	String titulo = "";
 	String enlace = "";

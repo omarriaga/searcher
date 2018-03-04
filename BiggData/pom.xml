@@ -26,8 +26,40 @@
             <version>7.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.6.0-1</version>
+        </dependency>
+        <dependency>
+            <groupId>sqj</groupId>
+            <artifactId>sample</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/saxon9he.jar</systemPath>
+        </dependency>
+                <dependency>
+            <groupId>sqj2</groupId>
+            <artifactId>sample2</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/saxon9-test.jar</systemPath>
+        </dependency>
+                <dependency>
+            <groupId>sqj1</groupId>
+            <artifactId>sample1</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/saxon9-unpack.jar</systemPath>
+        </dependency>
+                  <dependency>
+            <groupId>sqj3</groupId>
+            <artifactId>sample3</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/saxon9-xqj.jar</systemPath>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

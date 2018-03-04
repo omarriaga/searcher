@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Taller 1</title>
+        <style>
+        h2.taller {color:DarkSlateBlue; text-align: center; }
+        h3{text-align: center;}
+
+        </style>
+    </h:head>
+    <h:body>
+                
+        <h:panelGrid id="pGeneral2" columns="2" style="width:100%">
+
+		<h:panelGroup id="encabezado1">
+			<h2 class="taller">
+                            Taller 1
+			</h2>
+			<h3>
+                            Descubrimiento de información y manejo básico de fuentes semiestructuradas y no estructuradas
+			</h3>
+		</h:panelGroup>
+	</h:panelGrid>
+        <h:panelGrid id="pGeneral" columns="2" style="width:95%; height:80%;"
+		styleClass="centered" columnClasses="centered, centered">
+		<h:form>
+			<p:panel id="menu" header="Ejercicios" styleClass="centered" footer=""
+				style="margin-bottom:20px ;">
+				<h:panelGrid id="panel1" columns="1" cellpadding="5px">
+					<p:separator />
+					<p:commandButton id="bt1" value="Profesores"
+						style="width:200px;height:35px"
+						icon="ui-icon-newwin" />
+                                        <p:commandButton id="bt2" value="Noticias"
+						style="width:200px;height:35px"
+                                                actionListener="#{talleer1.ejercicioRSS()}"
+                                                update=":pForm"
+						icon="ui-icon-newwin" />
+                                        <p:separator />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>                    
+
+                <h:panelGroup id = "pForm">
+			<h:panelGroup id="contenedorRss">
+				<h:panelGrid id="panelRss" columns="1"
+                                             rendered="#{talleer1.booleanoRss}">
+					<ui:include src="EjercicioRSS.xhtml"></ui:include>
+				</h:panelGrid>
+			</h:panelGroup>
+		</h:panelGroup>
+            
+               <h:form id="form">
+                    <p:panel id="panel" header="xQuery filter" style="margin-bottom:10px;">
+                        <p:messages id="messages" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="tipoFiltro" value="Filtro: " />
+                            <p:selectOneMenu id="tipoFiltro" value="#{talleer1.tipoFiltro}" style="width:250px">
+                                <p:ajax listener="#{talleer1.onCountryChange}"  />
+                                <f:selectItem itemLabel="Seleccione el filtro" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{talleer1.dropD}" />
+                            </p:selectOneMenu>
+
+
+                          <p:outputLabel for="palabraclave1" value="Palabra Clave:" />
+                          <p:inputText id="palabraclave1" value="#{talleer1.palabraClave}" required="true" label="Palabra clave:"/>
+                            <p:message for="palabraclave1" />   
+                        </h:panelGrid>
+                        <p:separator />
+                        <p:commandButton value="Filtrar" actionListener="#{talleer1.filtrajexQuery()}"  update=":xqForm" icon="ui-icon-check" />
+                   </p:panel>   
+                </h:form>
+            
+                <h:panelGroup id = "xqForm">
+			<h:panelGroup id="contenedorRssXQ">
+				<h:panelGrid id="panelRssXQ" columns="1"
+                                             rendered="#{talleer1.booleanoXQuery}">
+                                    <ui:include src="FiltradoXQuery.xhtml"></ui:include>
+				</h:panelGrid>
+			</h:panelGroup>
+		</h:panelGroup>
+            
+            
+                <h:form id="formRegex">
+                    <p:panel id="panelRg" header="Regex filter" style="margin-bottom:10px;">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="tipoRG" value="Filtro: " />
+                            <p:selectOneMenu id="tipoRG" value="#{talleer1.tipoFiltroRG}" style="width:250px">
+                                <p:ajax listener="#{talleer1.onCountryChange2}"  />
+                                <f:selectItem itemLabel="Seleccione el filtro" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{talleer1.dropD}" />
+                            </p:selectOneMenu>
+
+
+                          <p:outputLabel for="palabraclave2" value="Palabra Clave:" />
+                          <p:inputText id="palabraclave2" value="#{talleer1.palabraClaveRG}" required="true" label="Palabra clave:"/>
+                            <p:message for="palabraclave2" />   
+                        </h:panelGrid>
+                        <p:separator />
+                        <p:commandButton value="Filtrar" actionListener="#{talleer1.filtrajeRX()}" update=":rgForm" icon="ui-icon-check" />
+                   </p:panel>   
+                </h:form>
+            
+                <h:panelGroup id = "rgForm">
+			<h:panelGroup id="contenedorRssRG">
+				<h:panelGrid id="panelRssRG" columns="1"
+                                             rendered="#{talleer1.booleanoRG}">
+                                    <ui:include src="FiltradoRG.xhtml"></ui:include>
+				</h:panelGrid>
+			</h:panelGroup>
+		</h:panelGroup>
+
+	</h:panelGrid>
+        
+        <h:form>
+            <h:commandButton value="HOME" action="index?faces-redirect=true" >
+                <f:actionListener binding="#{talleer1.booleanFalsos()}" />
+            </h:commandButton>
+        
+        </h:form>
+
+    </h:body>
+    
+</html>
+

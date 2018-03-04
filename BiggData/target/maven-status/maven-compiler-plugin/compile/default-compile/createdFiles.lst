@@ -1,5 +1,6 @@
-bigdata\bean\talleer1.class
 RSS\LectorRSS.class
+bigdata\bean\talleer1.class
+bigdata\bean\Managmentbooleans.class
 RSS\News.class
 RSS\Noticiia.class
 RSS\ReadSaveRss.class

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Profesores</title>
+        <style>
+        h2.taller {color:DarkSlateBlue; text-align: center; }
+        h3{text-align: center;}
+
+        </style>
+    </h:head>
+    <h:body>
+                <h:panelGroup id="encabezado1">
+			<h2 class="taller">
+                            Taller 1
+			</h2>
+			<h3>
+                            Descubrimiento de información y manejo básico de fuentes semiestructuradas y no estructuradas <br/>
+                            Crawler-Eventos
+			</h3>
+                    
+		</h:panelGroup>
+        
+         <h:form>
+            <p:dataTable var="car" value="" rows="10"
+                         widgetVar="carsTable"
+                         emptyMessage="No hay noticias"
+                         filteredValue=""
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+             
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Busqueda en todo:" />
+                        <p:inputText id="globalFilter" onkeyup="" style="width:150px" placeholder="Enter keyword"/>
+                    </p:outputPanel>                    
+                </f:facet>  
+
+                <p:column filterBy="" headerText="Nombre" footerText="contains" filterMatchMode="contains">
+                    <h:outputText value="" />
+                </p:column>
+ 
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -19,7 +19,7 @@ public class talleer1 implements Serializable {
 
     
     private boolean booleanoRss;
-    private boolean booleanocRAWLER = false;
+    private boolean booleanocRAWLER;
     private boolean booleanoXQuery;
     private boolean booleanoRG;
     private String tipoFiltro;
@@ -45,6 +45,7 @@ public class talleer1 implements Serializable {
         getDropD().put("Categoria", "categoria");
         getDropD().put("Descripción", "descripcion");
         booleanoRss = false;
+        booleanocRAWLER = false;
         setBooleanoRG(false);
         setBooleanoXQuery(false);
         rss = new ReadSaveRss();
@@ -270,7 +271,7 @@ public class talleer1 implements Serializable {
     }
     
      public void ejercicioRSS() {
-            booleanocRAWLER = false;
+            booleanocRAWLER = true;
             booleanoRss = true;// estamos con rss
             noticiasRss = (ArrayList<Noticiia>) rss.rss().getNews();          
     }

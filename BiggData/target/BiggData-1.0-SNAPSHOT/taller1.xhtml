@@ -22,8 +22,10 @@
                             Taller 1
 			</h2>
 			<h3>
-                            Descubrimiento de información y manejo básico de fuentes semiestructuradas y no estructuradas
+                            Descubrimiento de información y manejo básico de fuentes semiestructuradas y no estructuradas <br/>
+                            RSS
 			</h3>
+                    
 		</h:panelGroup>
 	</h:panelGrid>
         <h:panelGrid id="pGeneral" columns="2" style="width:95%; height:80%;"
@@ -33,13 +35,11 @@
 				style="margin-bottom:20px ;">
 				<h:panelGrid id="panel1" columns="1" cellpadding="5px">
 					<p:separator />
-					<p:commandButton id="bt1" value="Profesores"
-						style="width:200px;height:35px"
-						icon="ui-icon-newwin" />
+
                                         <p:commandButton id="bt2" value="Noticias"
 						style="width:200px;height:35px"
                                                 actionListener="#{talleer1.ejercicioRSS()}"
-                                                update=":pForm"
+                                                update=":pForm :form :formRegex"
 						icon="ui-icon-newwin" />
                                         <p:separator />
 				</h:panelGrid>
@@ -56,9 +56,9 @@
 		</h:panelGroup>
             
                <h:form id="form">
-                    <p:panel id="panel" header="xQuery filter" style="margin-bottom:10px;">
+                    <p:panel id="panel" header="xQuery filter" style="margin-bottom:10px;" rendered="#{talleer1.booleanoCrawler}">
                         <p:messages id="messages" />
-                        <h:panelGrid columns="2" cellpadding="5">
+                        <h:panelGrid columns="2" cellpadding="5" >
                             <p:outputLabel for="tipoFiltro" value="Filtro: " />
                             <p:selectOneMenu id="tipoFiltro" value="#{talleer1.tipoFiltro}" style="width:250px">
                                 <p:ajax listener="#{talleer1.onCountryChange}"  />
@@ -87,8 +87,8 @@
             
             
                 <h:form id="formRegex">
-                    <p:panel id="panelRg" header="Regex filter" style="margin-bottom:10px;">
-                        <h:panelGrid columns="2" cellpadding="5">
+                    <p:panel id="panelRg" header="Regex filter" style="margin-bottom:10px;" rendered="#{talleer1.booleanoCrawler}">
+                        <h:panelGrid columns="2" cellpadding="5" >
                             <p:outputLabel for="tipoRG" value="Filtro: " />
                             <p:selectOneMenu id="tipoRG" value="#{talleer1.tipoFiltroRG}" style="width:250px">
                                 <p:ajax listener="#{talleer1.onCountryChange2}"  />
